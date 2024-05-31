@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+
+<html lang="cs">
+
+
+<head>
+    
+    <meta charset="UTF-8">
+    <!-- Kódování znaků -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Úkolníček </title>
+    
+    <link rel="stylesheet" href="static/static.css">
+    <!-- Odkaz na CSS -->
+</head>
+
+<body>
+    <h1>Seznam úkolů</h1>
+    
+    <ul>
+        
+        {% for todo in todos %}<!-- Cyklus pro iteraci přes seznam úkolů -->
+        
+          <li>
+              
+              <input type="checkbox" name="done" {% if todo['hotovo'] %} checked {%endif%} disabled onchange="this.form.submit()">
+              <!-- Čtvereček pro označení hotového úkolu -->
+              <span {%if todo['hotovo'] %} style="text-decoration: line-through" {%endif%}>{{ todo['úkol'] }}</span>
+              <!-- Zobrazení textu  u úkolu -->
+              <a href="{{ url_for('delete', index=loop.index0) }}">Smazat</a>
+              <!-- Odkaz na smazání úkolu -->
+              <a href="{{ url_for('check', index=loop.index0) }}">Označit jako hotovo</a>
+              <!-- Odkaz na označení úkolu jako hotový -->
+          </li>
+        {% endfor %} <!-- Konec cyklu -->
+        
+    </ul>
+   
+    <form action="{{ url_for('add')}}" method="post"><!-- Formulář pro přidání úkolu -->
+        
+        <input type="text" name="úkol"><!-- Zadání názvu úkolu  -->
+        
+        <button type="submit">Přidat úkol</button><!-- Tlačítko pro přidání úkolu -->
+        
+    </form>
+</body>
+</html>
