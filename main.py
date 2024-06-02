@@ -26,10 +26,8 @@ def check(index):
 
     return redirect(url_for("index"))
 
-# smazání úkolu
 @app.route("/smazat/<int:index>")
-def delete(index):
-    # Smazání úkolu ze seznamu
+def smazat(index):
     del todos[index]
     return redirect(url_for("index"))
 

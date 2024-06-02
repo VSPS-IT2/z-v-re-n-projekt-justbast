@@ -29,7 +29,7 @@
               <!-- Čtvereček pro označení hotového úkolu -->
               <span {%if todo['hotovo'] %} style="text-decoration: line-through" {%endif%}>{{ todo['úkol'] }}</span>
               <!-- Zobrazení textu  u úkolu -->
-              <a href="{{ url_for('delete', index=loop.index0) }}">Smazat</a>
+              <a href="{{ url_for('smazat', index=loop.index0) }}">Smazat</a>
               <!-- Odkaz na smazání úkolu -->
               <a href="{{ url_for('check', index=loop.index0) }}">Označit jako hotovo</a>
               <!-- Odkaz na označení úkolu jako hotový -->
